@@ -1,0 +1,8 @@
+{
+  "name": "Ciberparcial",
+  "short_name": "Ciberparcial",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f3ec",
+  "theme_color": "#1c1915"
+}

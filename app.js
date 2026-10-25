@@ -174,7 +174,7 @@ function pullNext() {
   render();
 }
 
-const LENGTH_EXTRAS = [
+const LENGTH_EXTRAS_UNUSED = [
   'El tema lo sitúa en ese papel y no en el de al lado',
   'La clase lo separa del caso que se le parece',
   'La diapositiva lo deja con ese alcance',
@@ -310,12 +310,8 @@ function fitToLength(text, target, salt) {
 }
 
 function buildChoices(card) {
-  const target = card.a.length;
-  const wrong = card.d.slice(0, 3).map((text, index) => {
-    let fitted = fitToLength(text, target, index * 5 + text.length);
-    if (fitted === card.a) fitted = fitToLength(`${text} en otro sentido`, target, index + 9);
-    return fitted;
-  });
+  const authored = typeof PLAUSIBLE !== "undefined" && PLAUSIBLE[card.id];
+  const wrong = (authored || card.d).slice(0, 3);
   const slot = Math.floor(Math.random() * 4);
   const choices = [];
   let cursor = 0;
